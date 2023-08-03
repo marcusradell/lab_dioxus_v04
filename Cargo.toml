@@ -1,0 +1,21 @@
+[package]
+name = "lab_dioxus_v04"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Common dependancies
+dioxus = { version = "*" }
+dioxus-fullstack = { version = "*" }
+
+# Web dependancies
+dioxus-web = { version = "*", features=["hydrate"], optional = true }
+
+# Server dependancies
+axum = { version = "0.6.12", optional = true }
+tokio = { version = "1.27.0", features = ["full"], optional = true }
+
+[features]
+default = []
+ssr = ["axum", "tokio", "dioxus-fullstack/axum"]
+web = ["dioxus-web"]
